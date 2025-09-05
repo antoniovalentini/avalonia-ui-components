@@ -1,0 +1,89 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templates="clr-namespace:AvaloniaTemplate.Views.SettingsComponent"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="800"
+             x:Class="AvaloniaTemplate.Views.SettingsComponent.SettingsView">
+
+    <Border Padding="20" Background="#eceef4">
+        <StackPanel Spacing="20">
+            <!-- Header -->
+            <StackPanel Orientation="Horizontal" Spacing="15">
+              <Button Click="NavigateBack_OnClick" Background="Transparent">
+                <PathIcon Data="{StaticResource ArrowLeftRegular}" />
+              </Button>
+              <TextBlock Text="Settings" FontSize="24" FontWeight="Medium"/>
+            </StackPanel>
+
+            <!-- Brightness block -->
+            <templates:SettingsBlock BlockTitle="Brightness">
+                <StackPanel Spacing="15">
+                    <Grid ColumnDefinitions="Auto, *, Auto">
+                        <PathIcon Data="{StaticResource WeatherSunnyRegular}" Height="18" />
+                        <Slider Grid.Column="1" Minimum="0" Maximum="1000" Value="700" Margin="15 0"/>
+                        <PathIcon Grid.Column="2" Data="{StaticResource WeatherSunnyRegular}" Height="28" Width="28" />
+                    </Grid>
+                    <Separator Margin="0" Background="#DDDDE1"/>
+                    <Grid ColumnDefinitions="*, Auto">
+                        <TextBlock Text="Automatic" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <ToggleSwitch Grid.Column="1" IsChecked="False" OffContent="" OnContent=""/>
+                    </Grid>
+                </StackPanel>
+            </templates:SettingsBlock>
+
+            <!-- ViewMode block -->
+            <templates:SettingsBlock BlockTitle="View mode">
+                <StackPanel>
+                    <Grid ColumnDefinitions="*, Auto" Margin="0 0 0 5">
+                        <TextBlock Text="Dark Mode" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <ToggleSwitch Grid.Column="1" IsChecked="False" OffContent="" OnContent="">
+                            <ToggleSwitch.Styles>
+                                <Style Selector="ToggleSwitch">
+                                    <Setter Property="Margin" Value="0"/>
+                                    <Setter Property="OffContent" Value="{x:Null}" />
+                                    <Setter Property="OnContent" Value="{x:Null}" />
+                                </Style>
+                            </ToggleSwitch.Styles>
+                        </ToggleSwitch>
+                    </Grid>
+                    <Separator Margin="0" Background="#DDDDE1"/>
+                    <Grid ColumnDefinitions="*, Auto" Margin="0 10">
+                        <TextBlock Text="Eye Comfort" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <PathIcon Grid.Column="1" Data="{StaticResource ChevronRightRegular}" Height="14" />
+                    </Grid>
+                    <Separator Margin="0" Background="#DDDDE1"/>
+                    <Grid ColumnDefinitions="*, Auto" Margin="0 10">
+                        <TextBlock Text="Users" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="10" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Separator Margin="0" Background="#DDDDE1"/>
+                    <Grid ColumnDefinitions="*, Auto" Margin="0 10 0 5">
+                        <TextBlock Text="Text Style" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Default" VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+            </templates:SettingsBlock>
+
+            <!-- Text -->
+            <templates:SettingsBlock BlockTitle="Text">
+                <StackPanel>
+                    <Grid ColumnDefinitions="*, Auto" Margin="0 5 0 10">
+                        <TextBlock Text="Text Style" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Default" VerticalAlignment="Center" />
+                    </Grid>
+                    <Separator Margin="0" Background="#DDDDE1"/>
+                    <Grid ColumnDefinitions="*, Auto" Margin="0 10">
+                        <TextBlock Text="Text Size and Width" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <PathIcon Grid.Column="1" Data="{StaticResource ChevronRightRegular}" Height="14" />
+                    </Grid>
+                    <Separator Margin="0" Background="#DDDDE1"/>
+                    <Grid ColumnDefinitions="*, Auto" Margin="0 10 0 5">
+                        <TextBlock Text="Display Size" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <PathIcon Grid.Column="1" Data="{StaticResource ChevronRightRegular}" Height="14" />
+                    </Grid>
+                </StackPanel>
+            </templates:SettingsBlock>
+        </StackPanel>
+    </Border>
+</UserControl>

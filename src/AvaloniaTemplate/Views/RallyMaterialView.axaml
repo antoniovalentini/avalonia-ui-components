@@ -1,0 +1,124 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:AvaloniaTemplate.Views"
+             mc:Ignorable="d" d:DesignWidth="540" d:DesignHeight="960"
+             x:Class="AvaloniaTemplate.Views.RallyMaterialView"
+             Background="{StaticResource BackgroundPrimaryColor}">
+
+  <UserControl.Resources>
+    <!-- Rally Background Colors -->
+    <SolidColorBrush x:Key="BackgroundPrimaryColor" Color="#36363f"/>
+    <SolidColorBrush x:Key="BackgroundSecondaryColor" Color="#3a3a42"/>
+    <SolidColorBrush x:Key="BackgroundDividerColor" Color="#313238"/>
+    <SolidColorBrush x:Key="BackgroundExtraColor" Color="#abacaf"/>
+    <SolidColorBrush x:Key="BackgroundHeaderColor" Color="#2b2b32"/>
+
+    <!-- Rally Color Palette -->
+    <SolidColorBrush x:Key="RallyGreen" Color="#1EB980"/>
+    <SolidColorBrush x:Key="RallyDarkGreen" Color="#045D56"/>
+    <SolidColorBrush x:Key="RallyOrange" Color="#FF6859"/>
+    <SolidColorBrush x:Key="RallyYellow" Color="#FFCF44"/>
+    <SolidColorBrush x:Key="RallyPurple" Color="#B15DFF"/>
+    <SolidColorBrush x:Key="RallyBlue" Color="#72DEFF"/>
+
+    <!-- Text -->
+    <SolidColorBrush x:Key="RallyTextPrimary" Color="White"/>
+    <SolidColorBrush x:Key="RallyTextSecondary" Color="#adaeb0"/>
+  </UserControl.Resources>
+
+  <ScrollViewer>
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, *">
+
+      <!-- Header -->
+      <Grid Background="{StaticResource BackgroundHeaderColor}">
+        <StackPanel HorizontalAlignment="Right" Margin="10" Orientation="Horizontal" Spacing="10">
+          <Rectangle Width="20" Height="20" Fill="{StaticResource BackgroundExtraColor}"/>
+          <Ellipse Width="20" Height="20" Fill="{StaticResource BackgroundExtraColor}"/>
+          <Rectangle Width="16" Height="16" Fill="{StaticResource BackgroundExtraColor}">
+            <Rectangle.RenderTransform>
+              <RotateTransform Angle="45"/>
+            </Rectangle.RenderTransform>
+          </Rectangle>
+        </StackPanel>
+      </Grid>
+
+      <!-- Buttons -->
+      <Grid Grid.Row="1" Margin="10" ColumnDefinitions="*,Auto,*,*,*">
+        <Button Click="NavigateBack_OnClick" Background="Transparent">
+          <PathIcon Data="{StaticResource ArrowLeftRegular}" Foreground="{StaticResource BackgroundExtraColor}" Width="30" Height="30"/>
+        </Button>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="15">
+          <PathIcon Data="{StaticResource CurrencyRegular}" Foreground="{StaticResource RallyTextPrimary}" Width="30" Height="30"/>
+          <TextBlock Text="ACCOUNTS" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 2 0 0"
+                     FontFamily="{StaticResource RobotoCondensedFont}" FontSize="22" FontWeight="SemiBold" LetterSpacing="2"
+                     Foreground="{StaticResource RallyTextPrimary}"/>
+        </StackPanel>
+
+        <PathIcon Grid.Column="2" Data="{StaticResource DataPieRegular}" Foreground="{StaticResource BackgroundExtraColor}" Width="30" Height="30"/>
+        <PathIcon Grid.Column="3" Data="{StaticResource DataHistogramRegular}" Foreground="{StaticResource BackgroundExtraColor}" Width="30" Height="30"/>
+        <PathIcon Grid.Column="4" Data="{StaticResource SettingsRegular}" Foreground="{StaticResource BackgroundExtraColor}" Width="30" Height="30"/>
+      </Grid>
+
+      <!-- Chart Area -->
+      <Grid Grid.Row="2" Margin="10 30">
+        <Ellipse Width="350"
+                 Height="350"
+                 Fill="{StaticResource RallyGreen}"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"/>
+        <Ellipse Width="338"
+                 Height="338"
+                 Fill="{StaticResource BackgroundPrimaryColor}"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+          <TextBlock Text="Total" Foreground="{StaticResource RallyTextPrimary}"
+                     FontFamily="{StaticResource RobotoCondensedFont}" FontWeight="Light"
+                     FontSize="22" LetterSpacing="1" HorizontalAlignment="Center"/>
+          <TextBlock Text="$12,132.49" Foreground="{StaticResource RallyTextPrimary}"
+                     FontFamily="{StaticResource EczarFont}" FontWeight="SemiBold"
+                     FontSize="52" LetterSpacing="1" HorizontalAlignment="Center"/>
+          <PathIcon Data="{StaticResource InfoRegular}" Width="28" Height="28"
+                    HorizontalAlignment="Center" Foreground="{StaticResource RallyTextPrimary}"/>
+        </StackPanel>
+      </Grid>
+
+      <!-- Divider -->
+      <Rectangle Grid.Row="3"
+                 Height="3"
+                 Fill="{StaticResource BackgroundDividerColor}"
+                 Margin="0 10 0 0" />
+
+      <!-- Accounts List -->
+      <ItemsControl Grid.Row="4" Background="{StaticResource BackgroundSecondaryColor}"
+                    Name="AccountsList">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate x:DataType="views:Account">
+            <Grid ColumnDefinitions="Auto, Auto, *, Auto, Auto" Margin="20 25 20 0" RowDefinitions="Auto, Auto">
+              <Rectangle Height="60" Width="5" Fill="{StaticResource RallyDarkGreen}"/>
+              <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="15 0" Spacing="5">
+                <TextBlock Text="{Binding Name}" Foreground="{StaticResource RallyTextPrimary}"
+                           FontSize="20" FontFamily="{StaticResource RobotoCondensedFont}"
+                           FontWeight="Light" LetterSpacing="1"/>
+                <TextBlock Text="{Binding Number}" FontSize="20" FontFamily="{StaticResource RobotoCondensedFont}"
+                           FontWeight="Light" LetterSpacing="1"
+                           Foreground="{StaticResource RallyTextSecondary}"/>
+              </StackPanel>
+              <TextBlock Grid.Column="3" Grid.Row="0" Text="{Binding Amount}"
+                         FontSize="30" FontFamily="{StaticResource EczarFont}" LetterSpacing="3"
+                         Foreground="{StaticResource RallyTextPrimary}" VerticalAlignment="Center"/>
+              <PathIcon Grid.Column="4" Grid.Row="0" Data="{DynamicResource ChevronRightRegular}" Height="14" Width="14" Margin="20 0 0 5"
+                        Foreground="{StaticResource RallyTextSecondary}" VerticalAlignment="Center"/>
+
+              <Rectangle Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1" Height="1" Fill="{StaticResource BackgroundDividerColor}"
+                         Margin="0 20 0 0"/>
+            </Grid>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </Grid>
+  </ScrollViewer>
+</UserControl>

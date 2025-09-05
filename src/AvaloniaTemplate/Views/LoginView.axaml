@@ -1,0 +1,191 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="540" d:DesignHeight="960"
+             x:Class="AvaloniaTemplate.Views.LoginView">
+  <UserControl.Styles>
+    <Style Selector="TextBox.CustomInput">
+      <Setter Property="BorderBrush" Value="#F0E6D6"/>
+      <Setter Property="Background" Value="#FDFCFA"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="CornerRadius" Value="16"/>
+      <Setter Property="Padding" Value="20,16"/>
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="Foreground" Value="#2D2A26"/>
+      <Style Selector="^:focus /template/ Border#PART_BorderElement, ^:pointerover /template/ Border#PART_BorderElement">
+        <Setter Property="BorderBrush" Value="#FF6B47"/>
+        <Setter Property="Background" Value="White"/>
+      </Style>
+    </Style>
+
+    <Style Selector="Button.PrimaryButton">
+      <Setter Property="Background" Value="#FF6B47"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="CornerRadius" Value="20"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="Padding" Value="18"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Style Selector="^:pointerover /template/ ContentPresenter, ^:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="#E5593D"/>
+        <Setter Property="Foreground" Value="White"/>
+      </Style>
+    </Style>
+
+    <Style Selector="Button.SocialButton">
+      <Setter Property="Background" Value="#FDFCFA"/>
+      <Setter Property="BorderBrush" Value="#F0E6D6"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="CornerRadius" Value="16"/>
+      <Setter Property="FontSize" Value="24"/>
+      <Setter Property="Padding" Value="14"/>
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Style Selector="^:pointerover /template/ ContentPresenter, ^:pressed /template/ ContentPresenter">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="#D0C4B4"/>
+      </Style>
+    </Style>
+
+    <Style Selector="TextBlock.Title">
+      <Setter Property="FontSize" Value="32"/>
+      <Setter Property="FontWeight" Value="Black"/>
+      <Setter Property="Foreground" Value="#2D2A26"/>
+      <Setter Property="HorizontalAlignment" Value="Center"/>
+      <Setter Property="LetterSpacing" Value="-0.5"/>
+    </Style>
+
+    <Style Selector="TextBlock.Subtitle">
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="Foreground" Value="#6B6B6B"/>
+      <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBlock.Label">
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="Foreground" Value="#2D2A26"/>
+      <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+
+    <Style Selector="Border.LoginContainer">
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="CornerRadius" Value="24"/>
+      <Setter Property="Padding" Value="32"/>
+      <Setter Property="BoxShadow" Value="0 12 40 0 #14000000"/>
+      <Setter Property="BorderBrush" Value="#F0E6D6"/>
+      <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style Selector="HyperlinkButton.TextLink">
+      <Setter Property="Foreground" Value="#FF6B47"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Style Selector="^:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="#E5593D"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="FontWeight" Value="Bold" />
+      </Style>
+    </Style>
+  </UserControl.Styles>
+
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+    <ScrollViewer.Background>
+      <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="#FFF8F0" Offset="0"/>
+        <GradientStop Color="#F5EDE4" Offset="1"/>
+      </LinearGradientBrush>
+    </ScrollViewer.Background>
+    <Grid ColumnDefinitions="*, 20*, *">
+      <StackPanel Grid.Column="1"
+        Spacing="20" Margin="0,25,0,25" HorizontalAlignment="Stretch">
+
+        <!-- Back button -->
+        <Button Classes="PrimaryButton" Padding="18 10" Click="NavigateBack_OnClick">
+          <Path Data="M 410.312 454.729 151.767 244.996 410.312 35.271 381.693 0 79.688 244.996 381.693 490 Z" Fill="White" Stretch="Fill" Height="20" Width="15"/>
+        </Button>
+
+        <!-- Mascot -->
+        <Border Width="100" Height="100" CornerRadius="60"
+                Background="#FF6B47" HorizontalAlignment="Center"
+                BoxShadow="0 8 24 0 #4DFF6B47">
+          <TextBlock Text="🍋" FontSize="48"
+                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- Welcome Text -->
+        <StackPanel Spacing="8" Margin="0,0,0,10">
+          <TextBlock Text="LOGIN" Classes="Title"/>
+          <TextBlock Text="Lorem ipsum dolor sit amet, consectetur." Classes="Subtitle"/>
+        </StackPanel>
+
+        <!-- Login Container -->
+        <Border Classes="LoginContainer" HorizontalAlignment="Stretch">
+          <StackPanel Spacing="20">
+
+            <!-- Email Input -->
+            <StackPanel>
+              <TextBlock Text="Email" Classes="Label"/>
+              <TextBox Classes="CustomInput" Watermark="your@email.com"
+                       Name="EmailInput"/>
+            </StackPanel>
+
+            <!-- Password Input -->
+            <StackPanel>
+              <TextBlock Text="Password" Classes="Label"/>
+              <TextBox Classes="CustomInput" Watermark="Enter your password"
+                       PasswordChar="●" Name="PasswordInput"/>
+            </StackPanel>
+
+            <!-- Login Button -->
+            <Button Classes="PrimaryButton" Content="LOG IN"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,8,0,0"/>
+
+            <!-- Forgot Password -->
+            <TextBlock HorizontalAlignment="Center">
+              <HyperlinkButton Classes="TextLink" Content="Forgot your password?" />
+            </TextBlock>
+
+            <!-- Divider -->
+            <Grid ColumnDefinitions="*,Auto,*">
+              <Border Grid.Column="0" Height="1" Background="#E6E6E6"
+                      VerticalAlignment="Center"/>
+              <TextBlock Grid.Column="1" Text="or continue with"
+                         Foreground="#A0A0A0" FontSize="14"
+                         Margin="16,0"/>
+              <Border Grid.Column="2" Height="1" Background="#E6E6E6"
+                      VerticalAlignment="Center"/>
+            </Grid>
+
+            <!-- Social Login Buttons -->
+            <UniformGrid Columns="3" Margin="0,0,0,24">
+              <Button Classes="SocialButton" Margin="0,0,6,0">
+                <Image Source="/Assets/search.png" Width="28"/>
+              </Button>
+              <Button Classes="SocialButton" Margin="6,0">
+                <Image Source="/Assets/facebook.png" Width="28"/>
+              </Button>
+              <Button Classes="SocialButton" Margin="6,0,0,0">
+                <Image Source="/Assets/outlook.png" Width="28"/>
+              </Button>
+            </UniformGrid>
+
+            <!-- Sign Up Link -->
+            <TextBlock HorizontalAlignment="Center" FontSize="14"
+                       Foreground="#6B6B6B">
+              <TextBlock Text="Don't have an account?" VerticalAlignment="Center"/>
+              <HyperlinkButton Classes="TextLink" Content="Sign up here" />
+            </TextBlock>
+
+          </StackPanel>
+        </Border>
+      </StackPanel>
+    </Grid>
+  </ScrollViewer>
+</UserControl>
+

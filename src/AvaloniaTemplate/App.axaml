@@ -1,0 +1,20 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:AvaloniaTemplate"
+             x:Class="AvaloniaTemplate.App"
+             RequestedThemeVariant="Light">
+
+  <Application.DataTemplates>
+    <local:ViewLocator />
+  </Application.DataTemplates>
+
+  <Application.Styles>
+    <FluentTheme />
+    <StyleInclude Source="avares://AvaloniaTemplate/Assets/Icons.axaml" />
+    <StyleInclude Source="avares://AvaloniaTemplate/Views/SettingsComponent/SettingsBlock.axaml" />
+  </Application.Styles>
+  <Application.Resources>
+    <FontFamily x:Key="RobotoCondensedFont">avares://AvaloniaTemplate/Assets/Fonts#Roboto Condensed</FontFamily>
+    <FontFamily x:Key="EczarFont">avares://AvaloniaTemplate/Assets/Fonts/Eczar#Eczar</FontFamily>
+  </Application.Resources>
+</Application>
